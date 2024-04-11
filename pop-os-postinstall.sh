@@ -191,11 +191,11 @@ echo "file:///home/$USER/TEMP 🕖 TEMP" >> $FILE
 # -------------------------------------------------------------------------------- #
 # -------------------------------EXECUÇÃO----------------------------------------- #
 
-travas_apt
+#travas_apt
 testes_internet
-travas_apt
+#travas_apt
 apt_update
-travas_apt
+#travas_apt
 add_archi386
 just_apt_update
 install_debs
