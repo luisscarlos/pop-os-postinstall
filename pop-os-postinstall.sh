@@ -16,10 +16,6 @@ set -e
 ##URLS
 
 URL_GOOGLE_CHROME="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
-URL_4K_VIDEO_DOWNLOADER="https://dl.4kdownload.com/app/4kvideodownloader_4.20.0-1_amd64.deb?source=website"
-URL_INSYNC="https://d2t3ff60b2tol4.cloudfront.net/builds/insync_3.7.2.50318-impish_amd64.deb"
-URL_SYNOLOGY_DRIVE="https://global.download.synology.com/download/Utility/SynologyDriveClient/3.0.3-12689/Ubuntu/Installer/x86_64/synology-drive-client-12689.x86_64.deb"
-
 
 ##DIRETÓRIOS E ARQUIVOS
 
@@ -76,23 +72,21 @@ sudo apt update -y
 ##DEB SOFTWARES TO INSTALL
 
 PROGRAMAS_PARA_INSTALAR=(
-  snapd
-  winff
-  virtualbox
-  ratbagd
-  gparted
-  timeshift
-  gufw
-  synaptic
-  solaar
-  vlc
-  code
-  gnome-sushi 
-  folder-color
-  git
-  wget
-  ubuntu-restricted-extras
-  v4l2loopback-utils
+  virtualbox #Vitualização de sistemas operacionais
+  gparted #Gerenciador de partições
+  timeshift #Restaurar o sistema a partir de um ponto
+  gufw #Firewall
+  synaptic #Gerenciador de pacotes
+  solaar #Gerenciador de dispositivos Logitech
+  vlc #Reprodutor de vídeos
+  code #Visual Studio Code
+  gnome-sushi #Plugin que permite que você pré-visualize qualquer arquivo sem precisar abrir ele 
+  folder-color #Permite alterar cores das pastas
+  git #O que ser?
+  wget #Ferramenta para conseguir fazer download de arquivos da Web
+  ubuntu-restricted-extras #Permite instalar softwares que são restritos em alguns países
+
+  spotify-client #Reprodutor de músicas online
  
 )
 
@@ -106,9 +100,6 @@ echo -e "${VERDE}[INFO] - Baixando pacotes .deb${SEM_COR}"
 
 mkdir "$DIRETORIO_DOWNLOADS"
 wget -c "$URL_GOOGLE_CHROME"       -P "$DIRETORIO_DOWNLOADS"
-wget -c "$URL_4K_VIDEO_DOWNLOADER" -P "$DIRETORIO_DOWNLOADS"
-wget -c "$URL_INSYNC"              -P "$DIRETORIO_DOWNLOADS"
-wget -c "$URL_SYNOLOGY_DRIVE"      -P "$DIRETORIO_DOWNLOADS"
 
 ## Instalando pacotes .deb baixados na sessão anterior ##
 echo -e "${VERDE}[INFO] - Instalando pacotes .deb baixados${SEM_COR}"
@@ -131,18 +122,15 @@ install_flatpaks(){
 
   echo -e "${VERDE}[INFO] - Instalando pacotes flatpak${SEM_COR}"
 
-flatpak install flathub com.obsproject.Studio -y
-flatpak install flathub org.gimp.GIMP -y
-flatpak install flathub com.spotify.Client -y
-flatpak install flathub com.bitwarden.desktop -y
-flatpak install flathub org.telegram.desktop -y
-flatpak install flathub org.freedesktop.Piper -y
-flatpak install flathub org.chromium.Chromium -y
-flatpak install flathub org.gnome.Boxes -y
-flatpak install flathub org.onlyoffice.desktopeditors -y
-flatpak install flathub org.qbittorrent.qBittorrent -y
-flatpak install flathub org.flameshot.Flameshot -y
-flatpak install flathub org.electrum.electrum -y
+flatpak install flathub com.bitwarden.desktop -y #Gerenciador de senhas
+flatpak install flathub org.freedesktop.Piper -y #Gaming mouse configuration utility
+flatpak install flathub org.gnome.Boxes -y #Virtualização
+flatpak install flathub org.onlyoffice.desktopeditors -y #Suite Office
+flatpak install flathub org.flameshot.Flameshot -y #Screenshot tool
+#Developer Tools
+flatpak install flathub com.jetbrains.IntelliJ-IDEA-Ultimate #Intellij Ultimate
+flatpak install flathub io.dbeaver.DBeaverCommunity #Dbeaver -> Database
+flatpak install flathub com.getpostman.Postman #HTTP Client
 }
 
 ## Instalando pacotes Snap ##
